@@ -1,0 +1,98 @@
+/* Apollo Lyre styles. Shared design for every page, then one block per page layout. */
+
+body {
+  --ink: #1b2447; --mist: #eef1f6; --paper: #fff; --line: #d6dce8;
+  --lapis: #2b3a8c; --laurel: #2f7a5f; --rose: #a33a4b; --gold: #b07d1c; --muted: #5d6785;
+  margin: 0; background: var(--mist); color: var(--ink);
+  font: 15px/1.5 Manrope, system-ui, sans-serif;
+
+  /* Header and navigation */
+  & header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding: 20px 28px; background: var(--ink); color: #fff; }
+  & h1 { font: 600 26px/1.2 Fraunces, Georgia, serif; margin: 0 auto 0 0; }
+  & nav { display: flex; gap: 16px; }
+  & nav a { color: #cfd6f5; text-decoration: none; }
+  & nav a:hover { color: #fff; text-decoration: underline; }
+  & header p { margin: 0; }
+  & #connection-status { padding: 3px 10px; border-radius: 999px; background: #3a4470; color: #fff; }
+  & #connection-status[data-state="on"] { background: var(--laurel); }
+
+  /* Page body and panels */
+  & main { display: flex; flex-direction: column; gap: 16px; max-width: 760px; margin: 0 auto; padding: 24px 28px; }
+  & main > section { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
+  & h2 { font: 600 18px Fraunces, Georgia, serif; margin: 0 0 4px; }
+  & p { margin: 0 0 6px; }
+  & code { padding: 2px 6px; border-radius: 4px; background: var(--mist); word-break: break-all; }
+
+  /* Forms and buttons */
+  & form { display: flex; flex-direction: column; gap: 6px; }
+  & label { margin-top: 4px; font-size: 13px; color: var(--muted); }
+  & input:not([type=checkbox]), & select, & textarea { width: 100%; box-sizing: border-box; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; font: inherit; color: var(--ink); background: #fff; }
+  & input:focus-visible, & select:focus-visible, & textarea:focus-visible, & button:focus-visible { outline: 2px solid var(--lapis); outline-offset: 1px; }
+  & button { padding: 7px 10px; border: 1px solid var(--lapis); border-radius: 6px; background: var(--lapis); color: #fff; font: 600 13px/1.3 Manrope, system-ui, sans-serif; text-align: left; cursor: pointer; }
+  & button:hover { background: #1f2c70; }
+  & #disconnect-btn, & [data-action="clearOutput"] { background: transparent; color: var(--lapis); }
+  & #disconnect-btn:hover, & [data-action="clearOutput"]:hover { background: var(--mist); }
+
+  /* Raw output */
+  & pre { margin: 0; padding: 12px; overflow: auto; border-radius: 8px; background: var(--ink); color: #dfe5ff; font-size: 12px; white-space: pre-wrap; word-break: break-word; }
+  & details { margin-top: 14px; }
+  & summary { color: var(--lapis); font-weight: 600; cursor: pointer; }
+  & details pre { max-height: 420px; margin-top: 8px; }
+
+  /* Visual results (api.html) */
+  & .hint { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+  & .status { display: flex; gap: 10px; padding: 8px 12px; border-radius: 6px; font: 13px ui-monospace, Menlo, monospace; background: #e6f2ec; color: var(--laurel); }
+  & .status.bad { background: #f7e4e7; color: var(--rose); }
+  & .note { margin: 10px 0; color: var(--muted); }
+  & .stats { display: flex; gap: 10px; margin: 12px 0; }
+  & .stats div { flex: 1; padding: 10px 12px; background: var(--mist); border-radius: 8px; }
+  & .stats b { display: block; font: 600 22px Fraunces, Georgia, serif; }
+  & .stats span { font-size: 12px; color: var(--muted); }
+  & .panel { margin: 12px 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; }
+  & .panel h3 { margin: 0 0 8px; font: 600 15px Fraunces, Georgia, serif; }
+  & .bar { display: grid; grid-template-columns: minmax(80px, 30%) 1fr 28px; gap: 8px; align-items: center; padding: 2px 0; font-size: 13px; }
+  & .fill { height: 8px; border-radius: 4px; background: var(--mist); }
+  & .fill i { display: block; height: 100%; border-radius: 4px; background: var(--gold); }
+  & .bar b { text-align: right; }
+  & .cards { display: grid; gap: 8px; margin-top: 12px; }
+  & .card { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center; padding: 8px; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+  & .card:hover { border-color: var(--lapis); }
+  & .card.picked { outline: 2px solid var(--gold); }
+  & .card img, & .card .ph { width: 52px; height: 52px; object-fit: cover; border-radius: 6px; background: var(--mist); }
+  & .card small { display: block; color: var(--muted); }
+  & .card time { font-size: 13px; color: var(--muted); }
+  & .card em { display: inline-block; margin: 3px 4px 0 0; padding: 1px 8px; border-radius: 999px; background: var(--mist); font: normal 12px Manrope, system-ui, sans-serif; }
+}
+
+/* index.html: one centred column, connect buttons in a row */
+body[data-page="index"] #spotify-connection { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px; }
+body[data-page="index"] #spotify-connection > p { flex-basis: 100%; }
+body[data-page="index"] #spotify-connection > h2 { flex-basis: 100%; }
+
+/* login-signup.html: sign up and login side by side, output underneath */
+body[data-page="auth"] main { display: grid; grid-template-columns: 1fr 1fr; align-items: start; max-width: 900px; }
+body[data-page="auth"] #output-section { grid-column: 1 / -1; }
+
+/* api.html: controls on the left, results pane stays in view on the right */
+body[data-page="api"] main { display: grid; grid-template-columns: minmax(300px, 380px) 1fr; gap: 16px 28px; align-items: start; max-width: none; }
+body[data-page="api"] #output-section { grid-column: 2; grid-row: 1 / 9; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; }
+
+@media (max-width: 860px) {
+  body[data-page="auth"] main, body[data-page="api"] main { grid-template-columns: 1fr; }
+  body[data-page="auth"] #output-section { grid-column: auto; }
+  body[data-page="api"] #output-section { grid-column: 1; grid-row: auto; position: static; max-height: none; }
+}
+
+/* Workspace additions (api.html) */
+body .toast { margin: 0 0 10px; padding: 8px 12px; border-radius: 6px; font-size: 13px; }
+body .toast:empty { display: none; }
+body .toast.ok { background: #e6f2ec; color: var(--laurel); }
+body .toast.bad { background: #f7e4e7; color: var(--rose); }
+body .actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+body .actions:empty { display: none; }
+body .actions button { padding: 3px 8px; font-size: 12px; }
+body .tags { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin-top: 6px; }
+body .tags em { padding: 1px 8px; border-radius: 999px; background: #e3e8f8; color: var(--lapis); font: normal 12px Manrope, system-ui, sans-serif; cursor: pointer; }
+body .tags input { width: 90px; padding: 2px 6px; font-size: 12px; }
+body .genres { margin-top: 3px; }
+body h3 { margin: 10px 0 0; font: 600 15px Fraunces, Georgia, serif; }

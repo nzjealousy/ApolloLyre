@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apollo Lyre: "NEAT" Music Manager</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="index">
+  <header>
+    <h1>Apollo Lyre: "NEAT" Music Manager</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login-signup.html">Login / Sign up</a>
+      <a href="api.html">API tester</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="spotify-connection">
+      <h2>Spotify connection</h2>
+      <p>Status: <strong id="connection-status">Not connected</strong></p>
+      <button type="button" id="connect-btn" data-action="connect">Connect to Spotify</button>
+      <button type="button" id="disconnect-btn" data-action="disconnect">Disconnect</button>
+      <button type="button" data-action="profile">Test: get my profile</button>
+
+      <p>Redirect URI to register in the Spotify dashboard: <code id="redirect-uri"></code></p>
+    </section>
+
+    <section id="output-section">
+      <h2>Output</h2>
+      <pre id="output" aria-live="polite">Nothing yet.</pre>
+    </section>
+  </main>
+
+  <script src="apollo.js"></script>
+</body>
+</html>

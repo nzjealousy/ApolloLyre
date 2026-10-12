@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login / Sign up - Apollo Lyre</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="auth">
+  <header>
+    <h1>Apollo Lyre</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login-signup.html">Login / Sign up</a>
+      <a href="api.html">API tester</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="signup-section">
+      <h2>Sign up</h2>
+      <form id="signup-form">
+        <label for="signup-username">Username</label>
+        <input type="text" id="signup-username" name="username" required minlength="3">
+
+        <label for="signup-email">Email</label>
+        <input type="email" id="signup-email" name="email" required>
+
+        <label for="signup-password">Password</label>
+        <input type="password" id="signup-password" name="password" required minlength="8">
+
+        <label for="signup-confirm">Confirm password</label>
+        <input type="password" id="signup-confirm" name="confirm" required minlength="8">
+
+        <button type="submit">Create account</button>
+      </form>
+    </section>
+
+    <section id="login-section">
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" name="email" required>
+
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" name="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section id="output-section">
+      <h2>Output</h2>
+      <pre id="output" aria-live="polite">Nothing yet.</pre>
+    </section>
+  </main>
+
+  <script src="apollo.js"></script>
+</body>
+</html>

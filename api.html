@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search, playlists and analytics - Apollo Lyre</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Manrope:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="api">
+  <header>
+    <h1>Apollo Lyre workspace</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login-signup.html">Login / Sign up</a>
+      <a href="api.html">API tester</a>
+    </nav>
+    <p>Status: <strong id="connection-status">Not connected</strong></p>
+  </header>
+
+  <main>
+    <section id="sec-search">
+      <h2>1. Search</h2>
+      <form id="search-form">
+        <label for="search-q">Find songs or artists</label>
+        <input type="text" id="search-q" placeholder="e.g. blinding lights" required>
+        <label for="search-type">Look for</label>
+        <select id="search-type"><option value="track">Songs</option><option value="artist">Artists</option></select>
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <section id="sec-playlists">
+      <h2>2. Playlists</h2>
+      <label for="playlist-select">Your playlists (songs are added to this one)</label>
+      <select id="playlist-select"><option value="">Connect to Spotify first</option></select>
+      <div id="playlist-tags"></div>
+      <button type="button" data-action="loadPlaylists">Refresh list</button>
+      <button type="button" data-action="viewPlaylist">View songs in selected playlist</button>
+
+      <label for="cover-file">Cover picture (optional, JPEG or PNG)</label>
+      <input type="file" id="cover-file" accept="image/*">
+      <button type="button" data-action="uploadCover">Upload cover to selected playlist</button>
+
+      <h3>Create a new playlist</h3>
+      <label for="playlist-name">Name</label>
+      <input type="text" id="playlist-name">
+      <label for="playlist-desc">Description</label>
+      <input type="text" id="playlist-desc">
+      <label><input type="checkbox" id="playlist-public"> Public</label>
+      <button type="button" data-action="createPlaylist">Create playlist</button>
+    </section>
+
+    <section id="sec-analytics">
+      <h2>3. Analytics</h2>
+      <label for="time_range">Time range</label>
+      <select id="time_range">
+        <option value="short_term">Last 4 weeks</option>
+        <option value="medium_term" selected>Last 6 months</option>
+        <option value="long_term">Last year</option>
+      </select>
+      <label for="limit">How many items</label>
+      <input type="number" id="limit" value="20" min="1" max="50">
+      <button type="button" data-action="topArtists">Top artists and their genres</button>
+      <button type="button" data-action="topTracks">Top songs</button>
+      <button type="button" data-action="genreTracks">Genres from my top songs</button>
+      <button type="button" data-action="recent">Recently played</button>
+      <button type="button" data-action="savedTracks">Liked songs</button>
+      <button type="button" data-action="myTags">My tags</button>
+    </section>
+
+    <section id="sec-dev">
+      <details>
+        <summary>Developer tools</summary>
+        <button type="button" data-action="profile">GET /me (my profile)</button>
+        <form id="custom-form">
+          <label for="custom-method">Method</label>
+          <select id="custom-method"><option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option></select>
+          <label for="custom-path">Path (after /v1)</label>
+          <input type="text" id="custom-path" placeholder="/me/top/artists?limit=5">
+          <label for="custom-body">JSON body (optional)</label>
+          <textarea id="custom-body" rows="3"></textarea>
+          <button type="submit">Send custom request</button>
+        </form>
+      </details>
+    </section>
+
+    <section id="output-section">
+      <h2>Results</h2>
+      <p class="hint">Click a card to highlight it. Type a tag and press Enter to add it; click a tag to remove it.</p>
+      <div id="toast" class="toast" aria-live="polite"></div>
+      <div id="recs"></div>
+      <div id="visual" aria-live="polite"><p class="note">Run a search or an analytics test to see results here.</p></div>
+      <details>
+        <summary>Raw response</summary>
+        <pre id="output">Nothing yet.</pre>
+      </details>
+    </section>
+  </main>
+
+  <script src="apollo.js"></script>
+</body>
+</html>
