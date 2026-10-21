@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://raw.githubusercontent.com/nzjealousy/ApolloLyre/main/Assets/ApolloLyre_Dark.jpeg" alt="Apollo Lyre logo" width="150">
   <br>
-# 🎵 Apollo Lyre: WEB-BASED MUSIC LIBRARY, PLAYLIST AND TRACK MANAGEMENT SYSTEM
+🎵 Apollo Lyre: WEB-BASED MUSIC LIBRARY, PLAYLIST AND TRACK MANAGEMENT SYSTEM
 
 **Organise your music. Understand your listening. All in one place.**
 
