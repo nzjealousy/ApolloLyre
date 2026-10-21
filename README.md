@@ -11,8 +11,8 @@
 
 <br>
 
-<a href="https://YOUR-USERNAME.github.io/apollo-lyre/">
-  <img src="https://img.shields.io/badge/🌐%20Visit%20the%20Website-GitHub%20Pages-1DB954?style=for-the-badge&logo=github&logoColor=white" alt="Visit the GitHub Pages site" height="48">
+<a href="https://nzjealousy.github.io/ApolloLyre/">
+  <img src="https://img.shields.io/badge/🌐%20Visit%20the%20Website-GitHub%20Pages-1DB954?style=for-the-badge&logo=github&logoColor=white" alt="Try out Apollo Lyre" height="48">
 </a>
 
 </div>
