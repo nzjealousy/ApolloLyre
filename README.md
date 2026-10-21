@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://raw.githubusercontent.com/nzjealousy/ApolloLyre/main/Assets/ApolloLyre_Dark.jpeg" style="width: 100px; height: 100px; border-radius: 50%;" alt="Apollo Lyre logo" width="150">
+<img src="https://raw.githubusercontent.com/nzjealousy/ApolloLyre/main/Assets/ApolloLyre_Dark.jpeg"  alt="Apollo Lyre logo" width="150">
 
 <h1 align="center">🎵Apollo Lyre: WEB-BASED MUSIC LIBRARY, PLAYLIST AND TRACK MANAGEMENT SYSTEM</h1>
 
