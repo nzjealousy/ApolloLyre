@@ -87,8 +87,6 @@ Each module supports **insert, update, remove, search and view** operations.
 
 ## 🛠️ Tech Stack
 
-> ✏️ *Edit this section to match what your team actually used.*
-
 | Layer | Technology |
 | --- | --- |
 | Frontend | HTML, CSS, JavaScript |
@@ -100,7 +98,6 @@ Each module supports **insert, update, remove, search and view** operations.
 
 ## 🚀 Getting Started
 
-> ✏️ *Adjust the steps below to match your project setup.*
 
 ### Prerequisites
 - A web server environment (e.g. XAMPP or Node.js)
