@@ -117,3 +117,61 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(`[data-nav="${page}"]`)?.setAttribute("aria-current", "page");
   setupDrawer();
 })();
+
+
+/* Confirm dialog: forms with data-confirm, and confirmAction() for buttons. */
+(function () {
+  const dlg = document.getElementById("confirmDialog");
+  if (!dlg) return;
+
+  window.confirmAction = (text, label = "Delete") =>
+    new Promise((resolve) => {
+      dlg.querySelector("#confirmMsg").textContent = text;
+      dlg.querySelector("#confirmOk").textContent = label;
+      dlg.returnValue = "";
+      dlg.addEventListener("close", () => resolve(dlg.returnValue === "ok"), { once: true });
+      dlg.showModal();
+    });
+
+  document.addEventListener("submit", async (e) => {
+    const text = e.target.dataset.confirm;
+    if (!text) return;
+    e.preventDefault();
+    if (await confirmAction(text)) e.target.submit();
+  });
+})();
+
+/* Submit buttons with data-confirm ask first, then submit with that button as the submitter. */
+document.addEventListener("click", async (e) => {
+  const btn = e.target.closest("button[data-confirm]");
+  if (!btn || !btn.form) return;
+  e.preventDefault();
+  if (await confirmAction(btn.dataset.confirm)) btn.form.requestSubmit(btn);
+});
+
+/* Links with data-confirm-link ask first (log out). */
+document.addEventListener("click", async (e) => {
+  const link = e.target.closest("a[data-confirm-link]");
+  if (!link) return;
+  e.preventDefault();
+  if (await confirmAction(link.dataset.confirmLink, link.dataset.confirmLabel)) location.href = link.href;
+});
+
+/* App pages: ask the server to sync Spotify plays after the page has loaded (at most once an hour). */
+(function () {
+  if (!document.body.classList.contains("app")) return;
+  fetch("sync.php?check=1", { credentials: "same-origin" })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => {
+      // new plays were just imported: refresh the stats on these pages
+      if (d && d.imported > 0 && ["dashboard", "analytics"].includes(document.body.dataset.page)) location.reload();
+    })
+    .catch(() => {});
+})();
+
+/* Lists with data-scroll-keep stay where they were after a form inside them reloads the page. */
+document.querySelectorAll("[data-scroll-keep]").forEach((el) => {
+  const key = "scroll:" + location.pathname + location.search;
+  el.scrollTop = Number(sessionStorage.getItem(key)) || 0;
+  el.addEventListener("submit", () => sessionStorage.setItem(key, String(el.scrollTop)));
+});

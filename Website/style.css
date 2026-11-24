@@ -11,19 +11,24 @@
     --radius: 16px;
 }
 
-* { /* reset */
+* { /* reset, and thin scrollbars on every scrolling element (the width is not inherited) */
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scrollbar-width: thin;
 }
 
-html { /* smooth scrolling */
+html { /* smooth scrolling, and gold scrollbars everywhere (the colour is inherited) */
     scroll-behavior: smooth;
+    scrollbar-color: var(--gold) var(--bg-soft);
 }
 
 body { /* main body universal*/
     font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
-    background: var(--bg);/* var can be used to reference the value of a CSS variable */
+    /* image over the dark colour: centred at its own size (never stretched or tiled), fixed while scrolling */
+    background: var(--bg) url("Assets/aplo.png") center no-repeat fixed;
+    background-size: auto;
+    background-position: center;
     color: var(--text);
     line-height: 1.6;
 }
@@ -47,10 +52,12 @@ header {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
 }
-.icon{
+.icon {
     width: 50px;
     height: auto;
     margin: 10px;
+    font-size: 1.9rem;
+    margin-bottom: 12px;
 }
 
 .nav {
@@ -325,12 +332,6 @@ section {
     background: var(--bg-soft);
 }
 
-.grid-4 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -348,11 +349,6 @@ section {
 .card:hover {
     transform: translateY(-5px);
     border-color: var(--violet);
-}
-
-.icon {
-    font-size: 1.9rem;
-    margin-bottom: 12px;
 }
 
 .card h3 {
@@ -492,7 +488,6 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .grid-4,
     .steps {
         grid-template-columns: 1fr 1fr;
     }
@@ -539,7 +534,6 @@ footer {
 
 @media (max-width: 520px) {
 
-    .grid-4,
     .steps {
         grid-template-columns: 1fr;
     }
@@ -617,7 +611,8 @@ footer {
 .app {
     display: grid;
     grid-template-columns: 280px minmax(0, 1fr);
-    min-height: 100dvh;
+    height: 100dvh;
+    overflow: hidden;
 }
 
 .sidebar {
@@ -704,13 +699,19 @@ footer {
     flex-direction: column;
     gap: 28px;
     min-width: 0;
-    padding: 32px 40px 56px;
+    padding: 32px 40px 0;
+    height: 100dvh;
+    overflow: hidden;
 }
 
 .main > main {
     display: flex;
     flex-direction: column;
     gap: 28px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 40px;
 }
 
 .main section {
@@ -880,6 +881,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    min-width: 0;
 }
 
 .media-card .title {
@@ -895,7 +897,8 @@ footer {
 .media-card .actions {
     display: flex;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: auto;
+    padding-top: 12px;
 }
 
 .row {
@@ -927,6 +930,10 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    position: static;
+    padding: 0;
+    border: 0;
+    background: none;
 }
 
 .pill {
@@ -965,11 +972,12 @@ footer {
     flex-direction: column;
     justify-content: flex-end;
     height: 100%;
-    min-width: 0;
     gap: 8px;
     color: var(--muted);
     font-size: .8rem;
     text-align: center;
+    min-width: 0;
+    white-space: nowrap;
 }
 
 .chart i {
@@ -1104,7 +1112,7 @@ footer {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 24px;
-    align-items: start;
+    align-items: stretch;
 }
 
 .hero-stats {
@@ -1130,6 +1138,7 @@ footer {
     font: inherit;
     font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .new-card:hover {
@@ -1205,7 +1214,6 @@ footer {
     display: grid;
     place-items: center;
     padding: 40px 16px;
-    background: var(--bg-soft);
 }
 
 .auth-card {
@@ -1327,7 +1335,7 @@ footer {
     }
 
     .main {
-        padding: 20px 16px 40px;
+        padding: 20px 16px 0;
     }
 
     .user-chip span:last-child {
@@ -1371,7 +1379,409 @@ footer {
     list-style: none;
 }
 
-.chart > div {
+/* .main section resets padding to 0, so panel sections need it back */
+.main section.panel {
+    padding: 22px;
+}
+
+/* confirm dialog: centred modal (the global reset removes the default auto margin) */
+dialog.confirm {
+    margin: auto;
+    width: min(420px, 92vw);
+    padding: 28px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--text);
+}
+
+dialog.confirm::backdrop {
+    background: rgba(0, 0, 0, .65);
+}
+
+dialog.confirm h2 {
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+dialog.confirm p {
+    margin-bottom: 22px;
+    color: var(--muted);
+}
+
+dialog.confirm .form-actions {
+    justify-content: flex-end;
+}
+
+.field select {
+    font: inherit;
+    min-height: 48px;
+    padding: .65rem .9rem;
+    border-radius: 12px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-soft);
+    color: var(--text);
+}
+
+.panel form + form {
+    margin-top: 12px;
+}
+
+/* charts: labels stay on one line so every bar sits on the same baseline */
+
+.chart .short {
+    display: none;
+}
+
+@media (max-width: 520px) {
+    .chart {
+        gap: 5px;
+    }
+
+    .chart > div {
+        gap: 6px;
+        font-size: .68rem;
+    }
+
+    .chart .full {
+        display: none;
+    }
+
+    .chart .short {
+        display: inline;
+    }
+}
+
+/* library on phones: each song is a card, art on top, one line each for title, album and date */
+@media (max-width: 720px) {
+    .library-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .library-table,
+    .library-table tbody,
+    .library-table tr,
+    .library-table td {
+        display: block;
+    }
+
+    .library-table tr {
+        padding: 16px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .library-table tbody tr:last-child {
+        border-bottom: 0;
+    }
+
+    .library-table td {
+        min-width: 0;
+        max-width: 100%;
+        padding: 0;
+        border: 0;
+    }
+
+    .library-table td:first-child {
+        display: none;
+    }
+
+    .library-table .cell-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .library-table .cell-title > div {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .library-table .thumb-sm {
+        width: 96px;
+    }
+
+    .library-table strong,
+    .library-table .cell-title .muted,
+    .library-table td.muted {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .library-table td:last-child {
+        margin-top: 12px;
+    }
+}
+
+/* cover art: fills the thumbnail without distortion; the grey-violet block shows when there is none */
+.thumb,
+.thumb-sm {
+    background-size: cover;
+    background-position: center;
+}
+
+/* inline tag editor in the library */
+.tag-edit summary {
+    width: fit-content;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: .82rem;
+    cursor: pointer;
+}
+
+.tag-edit summary:hover {
+    color: var(--gold);
+}
+
+.tag-edit form {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.tag-edit input[type="text"] {
+    flex: 1;
     min-width: 0;
-    overflow-wrap: anywhere;
+    min-height: 36px;
+    padding: .3rem .7rem;
+    border-radius: 10px;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-soft);
+    color: var(--text);
+    font: inherit;
+    font-size: .9rem;
+}
+
+
+
+
+
+/* long text is cut with an ellipsis; card buttons sit at the bottom so rows of cards line up */
+
+.media-card .title,
+.media-card .meta {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.row strong,
+.row .grow .muted {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.tags .chip {
+    margin: 0;
+}
+
+@media (min-width: 721px) {
+    .library-table td:has(> .cell-title) {
+        width: 45%;
+        max-width: 0;
+    }
+
+    .library-table .cell-title,
+    .library-table .cell-title > div {
+        min-width: 0;
+    }
+
+    .library-table strong,
+    .library-table .cell-title .muted {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+/* playlist editor: songs scroll on the left, details stay in view on the right */
+.song-picker .panel-head a:hover {
+    color: var(--gold);
+}
+
+.picker-scroll {
+    max-height: calc(100dvh - 190px);
+    overflow-y: auto;
+    padding-inline-end: 12px;
+}
+
+@media (max-width: 1100px) {
+    .picker-scroll {
+        max-height: 60dvh;
+    }
+}
+
+/* fixed shell: the top bar stays put and only the content below it scrolls */
+
+
+/* analytics rows: boxes side by side share one height */
+.split.stretch {
+    align-items: stretch;
+}
+
+/* playlists: nothing on the page scrolls except the song list, which keeps a small gap at the bottom */
+@media (min-width: 1101px) {
+    [data-page="playlists"] .main > main {
+        overflow: hidden;
+        padding-bottom: 16px;
+    }
+
+    [data-page="playlists"] .split {
+        flex: 1;
+        min-height: 0;
+        grid-template-rows: minmax(0, 1fr);
+        align-items: stretch;
+    }
+
+    [data-page="playlists"] .song-picker {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    [data-page="playlists"] .picker-scroll {
+        flex: 1;
+        min-height: 0;
+        max-height: none;
+        overflow-y: auto;
+    }
+
+    [data-page="playlists"] .grid-cards {
+        min-height: 0;
+        overflow-y: auto;
+        align-content: start;
+        padding-bottom: 4px;
+    }
+
+    [data-page="playlists"] .details-panel {
+        align-self: start;
+    }
+}
+
+.main .steps-list {
+    display: grid;
+    gap: 8px;
+    padding-inline-start: 22px;
+    list-style: decimal;
+}
+
+code {
+    padding: 1px 6px;
+    border-radius: 6px;
+    background: var(--bg-soft);
+    font-size: .85em;
+}
+
+/* room between scrollbars and the content they scroll */
+@media (min-width: 901px) {
+    .main > main {
+        padding-inline-end: 20px;
+        scrollbar-gutter: stable;
+    }
+}
+
+@media (min-width: 1101px) {
+    [data-page="playlists"] .grid-cards {
+        padding-inline-end: 12px;
+    }
+}
+
+/* blocks keep their natural height so the whole content area scrolls, not a table inside it */
+.main > main > * {
+    flex-shrink: 0;
+}
+
+@media (min-width: 1101px) {
+    [data-page="playlists"] .split {
+        flex-shrink: 1;
+    }
+}
+
+/* playlists list without the details panel uses the full width */
+.split.split-single {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+/* dashboard: the weekly chart box stretches to end level with the stat cards beside it */
+
+.hero-split > .panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-split > .panel .chart {
+    flex: 1;
+    height: auto;
+    min-height: 160px;
+}
+
+/* filter pills are <nav> elements: undo the landing page's mobile-menu styling for them */
+
+/* phones: bigger tap targets and compact stat cards */
+@media (max-width: 720px) {
+    .btn-sm {
+        min-height: 44px;
+    }
+
+    .tag-edit summary,
+    .section-title a,
+    .song-picker .panel-head a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding-inline: 4px;
+    }
+
+    .tag-edit input[type="text"] {
+        min-height: 44px;
+    }
+
+    .hint a {
+        display: inline-block;
+        padding-block: 12px;
+    }
+}
+
+@media (max-width: 520px) {
+    .grid-stats,
+    .hero-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .hero-stats .stat-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .stat-card .value {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+
+    .page-head p a {
+        display: inline-block;
+        padding-block: 10px;
+    }
 }

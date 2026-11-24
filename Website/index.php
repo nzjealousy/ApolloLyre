@@ -13,7 +13,7 @@
   <!-- header -->
   <header>
     <div class="container nav">
-      <a class="brand" href="index.html" aria-label="Apollo Lyre home">
+      <a class="brand" href="index.php" aria-label="Apollo Lyre home">
         <img class="icon" src="Assets/apollo-lyre-icon.png" alt="Apollo Lyre logo">
         <span>Apollo Lyre</span>
       </a>
@@ -28,8 +28,8 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="login.html" class="btn btn-ghost">Log in</a>
-        <a href="register.html" class="btn btn-primary">Sign up</a>
+        <a href="login.php" class="btn btn-ghost">Log in</a>
+        <a href="register.php" class="btn btn-primary">Sign up</a>
         <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
       </div>
     </div>
@@ -43,9 +43,10 @@
           <span class="tag">MUSIC LIBRARY, PLAYLIST AND TRACK MANAGEMENT</span>
           <h1>Organise your music and understand your <span>listening habits.</span></h1>
           <p class="lead">
+            Save songs from Spotify, build playlists and see how you listen, all in one place.
           </p>
           <div class="intro-cta">
-            <a href="register.html" class="btn btn-primary">Create account</a>
+            <a href="register.php" class="btn btn-primary">Create account</a>
           </div>
           <p class="intro-note">Spotify connects only with your consent. You can disconnect or delete your account anytime.</p>
         </div>
@@ -149,7 +150,7 @@
         <div class="cta">
           <h2>Ready to organise your music?</h2>
           <p>Join Apollo Lyre to manage your music library and playlists, and understand your listening habits.</p>
-          <a href="register.html" class="btn btn-gold">Create your account</a>
+          <a href="register.php" class="btn btn-gold">Create your account</a>
         </div>
       </div>
     </section>
@@ -165,7 +166,7 @@
       <div class="foot-links">
         <a href="#features">Features</a>
         <a href="#privacy">Privacy</a>
-        <a href="login.html">Log in</a>
+        <a href="login.php">Log in</a>
         <a href="https://developer.spotify.com/terms" target="_blank" rel="noopener">Spotify Terms</a>
       </div>
     </div>
