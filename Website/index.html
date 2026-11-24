@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apollo Lyre | Web-based Music Library, Playlist and Track Management System</title>
+  <meta name="description" content="Apollo Lyre is a web-based music library, playlist and track management system. Connect Spotify, organise your songs and playlists, and understand your listening habits in one place.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Apollo Lyre home">
+        <img class="icon" src="Assets/apollo-lyre-icon.png" alt="Apollo Lyre logo">
+        <span>Apollo Lyre</span>
+      </a>
+
+      <nav id="nav">
+        <ul>
+          <li><a href="#problems">Why Apollo</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#privacy">Privacy</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost">Log in</a>
+        <a href="register.html" class="btn btn-primary">Sign up</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- introduction -->
+    <section class="intro">
+      <div class="container intro-grid">
+        <div>
+          <span class="tag">MUSIC LIBRARY, PLAYLIST AND TRACK MANAGEMENT</span>
+          <h1>Organise your music and understand your <span>listening habits.</span></h1>
+          <p class="lead">
+          </p>
+          <div class="intro-cta">
+            <a href="register.html" class="btn btn-primary">Create account</a>
+          </div>
+          <p class="intro-note">Spotify connects only with your consent. You can disconnect or delete your account anytime.</p>
+        </div>
+
+        <!-- Dashboard mock preview -->
+        <div class="preview" aria-hidden="true">
+          <div class="preview-head"><span>Your Listening Analytics</span><span>Last 30 days</span></div>
+          <div class="stat-row">
+            <div class="stat"><b>1,248</b><span>Total songs played</span></div>
+            <div class="stat"><b>84.0</b><span>Listening hours</span></div>
+            <div class="stat"><b>312</b><span>Unique artists</span></div>
+          </div>
+          <div class="bars">
+            <i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i>
+            <i style="height:85%"></i><i style="height:60%"></i><i style="height:95%"></i><i style="height:70%"></i>
+          </div>
+          <div class="track"><span>Sample Song A <span class="chip">Study</span></span><em>120 plays</em></div>
+          <div class="track"><span>Sample Song B <span class="chip">Workout</span></span><em>98 plays</em></div>
+          <div class="track"><span>Sample Song C <span class="chip">Chill</span></span><em>75 plays</em></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- problems -->
+    <section class="problems" id="problems">
+      <div class="container">
+        <div class="section-head">
+          <h2>The tools to manage and understand your listening habits.</h2>
+          <p>Apollo Lyre addresses three issues faced by music listeners.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card problem-card"><div class="icon">📊</div><h3>Limited overview of music collection statistics</h3></div>
+          <div class="card problem-card"><div class="icon">⏱️</div><h3>Personalized playlists take effort and time to build</h3></div>
+          <div class="card problem-card"><div class="icon">🗂️</div><h3>Difficulty in organising an accumulated music collection</h3></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- features -->
+    <section id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Everything your library needs</h2>
+          <p>Three main modules working together with your Spotify account.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="icon">🎧</div>
+            <h3>Track, Library and Playlist Management</h3>
+            <p>Search songs by title or artist, save them to your music library and add or remove personal tags. Create, rename, reorder and delete playlists, and add or remove songs in them.</p>
+          </div>
+          <div class="card">
+            <div class="icon">👤</div>
+            <h3>User Management</h3>
+            <p>Register an account, log in or out, connect or disconnect your Spotify account, view and update your profile, and delete your account whenever you want.</p>
+          </div>
+          <div class="card">
+            <div class="icon">📈</div>
+            <h3>Listening Analytics</h3>
+            <p>View your listening history and your analytics dashboard: total songs played, total listening hours, most and least played songs and artists, and top artists and tracks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- how it works -->
+    <section id="how" style="background: var(--bg-soft);">
+      <div class="container">
+        <div class="section-head">
+          <h2>Get started in four steps</h2>
+          <p>No complicated setup. No extra statistics services.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><h3>Sign up</h3><p>Create your Apollo Lyre account and log in.</p></div>
+          <div class="step"><h3>Connect Spotify</h3><p>Authorise access with your own consent.</p></div>
+          <div class="step"><h3>Organise</h3><p>Save and tag songs, and manage your playlists.</p></div>
+          <div class="step"><h3>Discover</h3><p>Open your analytics and explore your habits.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- privacy -->
+    <section class="privacy" id="privacy" style="background: var(--bg);">
+      <div class="container">
+        <div class="section-head">
+          <h2>Your data, treated with care</h2>
+          <p>Ethical and responsible data use is built in from day one.</p>
+        </div>
+        <ul class="privacy-list">
+          <li><b>Consent first.</b> Apollo Lyre never sees your Spotify password. You approve access on Spotify's own page.</li>
+          <li><b>Hashed passwords.</b> Your password is stored in hashed form, never in plain text.</li>
+          <li><b>You're in control.</b> Update your profile or delete your account and its stored data anytime.</li>
+          <li><b>Follows Spotify's terms.</b> Works only within the data the official API allows.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- call to action section -->
+    <section style="padding-bottom: 0;">
+      <div class="container">
+        <div class="cta">
+          <h2>Ready to organise your music?</h2>
+          <p>Join Apollo Lyre to manage your music library and playlists, and understand your listening habits.</p>
+          <a href="register.html" class="btn btn-gold">Create your account</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <strong>Apollo Lyre: Web-based Music Library, Playlist and Track Management System</strong><br>
+        CSC264 Group Project · Diploma in Computer Science (CDCS110)
+      </div>
+      <div class="foot-links">
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="login.html">Log in</a>
+        <a href="https://developer.spotify.com/terms" target="_blank" rel="noopener">Spotify Terms</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top:14px; font-size:.78rem;">
+      © 2026 Apollo Lyre. Not affiliated with or endorsed by Spotify.
+    </div>
+  </footer>
+</body>
+</html>

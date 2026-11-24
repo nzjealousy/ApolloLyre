@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlists | Apollo Lyre</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<!-- data-page="playlists" matches data-nav="playlists" in the sidebar, so Playlists is highlighted -->
+<body class="app" data-page="playlists">
+
+  <aside class="sidebar" id="sidebar">
+    <a class="sidebar-brand" href="dashboard.html" aria-label="Apollo Lyre dashboard">
+      <img src="Assets/apollo-lyre-icon.png" width="703" height="539" alt="">
+      <span>Apollo Lyre</span>
+    </a>
+
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="dashboard.html" data-nav="dashboard">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Dashboard</a></li>
+        <li><a href="library.html" data-nav="library">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>Music Library</a></li>
+        <li><a href="playlists.html" data-nav="playlists">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Playlists</a></li>
+        <li><a href="analytics.html" data-nav="analytics">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>Listening Analytics</a></li>
+        <li><a href="profile.html" data-nav="profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Profile</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button type="button" class="btn-icon menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <form class="topbar-search" action="library.html" method="get" role="search">
+        <label class="sr-only" for="q">Search songs, artists, albums or playlists</label>
+        <input type="search" id="q" name="q" placeholder="Search songs, artists, albums or playlists" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search">
+      </form>
+
+      <!-- TODO: open a notifications list from this button -->
+      <button type="button" class="btn-icon" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+      </button>
+
+      <a class="user-chip" href="profile.html">
+        <span class="avatar" aria-hidden="true">U</span>
+        <span>[Username]</span>
+      </a>
+    </div>
+
+    <!-- TODO: replace the bracketed placeholders with data from the backend -->
+    <main>
+
+      <!-- Page heading and New playlist button -->
+      <div class="page-head">
+        <div>
+          <h1>Playlists</h1>
+          <p>Create, edit and organise your playlists.</p>
+        </div>
+        <!-- TODO: clear the details panel so a new playlist can be created -->
+        <button type="button" class="btn btn-primary">New playlist</button>
+      </div>
+
+      <div class="split">
+
+        <!-- Playlist cards -->
+        <!-- TODO: repeat one card per playlist from the database -->
+        <div class="grid-cards">
+          <!-- TODO: same action as the New playlist button above -->
+          <button type="button" class="new-card">+ New playlist</button>
+
+          <article class="panel media-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h2 class="title">[Playlist name]</h2>
+            <p class="meta">[00] songs</p>
+            <!-- TODO: Play starts the playlist, Edit loads it into the details panel -->
+            <div class="actions">
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Play [Playlist name]">Play</button>
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Edit [Playlist name]">Edit</button>
+            </div>
+          </article>
+
+          <article class="panel media-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h2 class="title">[Playlist name]</h2>
+            <p class="meta">[00] songs</p>
+            <!-- TODO: Play starts the playlist, Edit loads it into the details panel -->
+            <div class="actions">
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Play [Playlist name]">Play</button>
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Edit [Playlist name]">Edit</button>
+            </div>
+          </article>
+
+          <article class="panel media-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h2 class="title">[Playlist name]</h2>
+            <p class="meta">[00] songs</p>
+            <!-- TODO: Play starts the playlist, Edit loads it into the details panel -->
+            <div class="actions">
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Play [Playlist name]">Play</button>
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Edit [Playlist name]">Edit</button>
+            </div>
+          </article>
+
+          <article class="panel media-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h2 class="title">[Playlist name]</h2>
+            <p class="meta">[00] songs</p>
+            <!-- TODO: Play starts the playlist, Edit loads it into the details panel -->
+            <div class="actions">
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Play [Playlist name]">Play</button>
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Edit [Playlist name]">Edit</button>
+            </div>
+          </article>
+
+          <article class="panel media-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h2 class="title">[Playlist name]</h2>
+            <p class="meta">[00] songs</p>
+            <!-- TODO: Play starts the playlist, Edit loads it into the details panel -->
+            <div class="actions">
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Play [Playlist name]">Play</button>
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Edit [Playlist name]">Edit</button>
+            </div>
+          </article>
+
+          <article class="panel media-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h2 class="title">[Playlist name]</h2>
+            <p class="meta">[00] songs</p>
+            <!-- TODO: Play starts the playlist, Edit loads it into the details panel -->
+            <div class="actions">
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Play [Playlist name]">Play</button>
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Edit [Playlist name]">Edit</button>
+            </div>
+          </article>
+
+          <article class="panel media-card">
+            <div class="thumb" aria-hidden="true"></div>
+            <h2 class="title">[Playlist name]</h2>
+            <p class="meta">[00] songs</p>
+            <!-- TODO: Play starts the playlist, Edit loads it into the details panel -->
+            <div class="actions">
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Play [Playlist name]">Play</button>
+              <button type="button" class="btn btn-ghost btn-sm" aria-label="Edit [Playlist name]">Edit</button>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Playlist details -->
+        <aside class="panel details-panel" aria-labelledby="details-title">
+          <h2 id="details-title">Playlist details</h2>
+          <!-- TODO: connect this to the backend save page -->
+          <form id="playlist-form" action="playlists.html" method="post">
+            <div class="field">
+              <label for="pl-name">Name</label>
+              <input type="text" id="pl-name" name="name" placeholder="[Playlist name]" maxlength="80" required>
+            </div>
+
+            <div class="field">
+              <label for="pl-desc">Description</label>
+              <input type="text" id="pl-desc" name="description" placeholder="[Short description]" maxlength="200">
+            </div>
+
+            <p class="section-title" id="songs-label">Songs in this playlist</p>
+            <!-- TODO: repeat one row per song in the selected playlist -->
+            <ul class="song-list" aria-labelledby="songs-label">
+              <li class="row">
+                <span class="thumb-sm" aria-hidden="true"></span>
+                <strong class="grow">[Song title]</strong>
+                <!-- TODO: remove this song from the playlist -->
+                <button type="button" class="btn btn-ghost btn-sm" aria-label="Remove [Song title]">Remove</button>
+              </li>
+              <li class="row">
+                <span class="thumb-sm" aria-hidden="true"></span>
+                <strong class="grow">[Song title]</strong>
+                <button type="button" class="btn btn-ghost btn-sm" aria-label="Remove [Song title]">Remove</button>
+              </li>
+            </ul>
+
+            <!-- TODO: add the chosen song to the playlist (suggest songs from the music library) -->
+            <div class="add-song">
+              <div class="field">
+                <label class="sr-only" for="pl-add-song">Add a song</label>
+                <input type="text" id="pl-add-song" name="song" placeholder="Add a song">
+              </div>
+              <button type="button" class="btn btn-ghost btn-sm">Add</button>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" name="btnsave" class="btn btn-primary">Save</button>
+              <!-- TODO: ask "Are you sure?" and call the delete playlist page -->
+              <button type="button" name="btndelete" class="btn btn-ghost">Delete</button>
+            </div>
+          </form>
+        </aside>
+
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>
